@@ -2421,4 +2421,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Level2.unity
   - Assets/Scenes/EmptyScene.unity
   - Assets/Scenes/EmptyScene2.unity
-  playerPath: E:/Rescue Game/Builds/Rescue Game Build/Rescue.exe
+  playerPath: E:/Rescue Game/Builds/Rescue.exe

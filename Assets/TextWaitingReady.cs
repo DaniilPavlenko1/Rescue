@@ -7,9 +7,10 @@ public class TextWaitingReady : MonoBehaviour
     public TMP_Text Waiting;
     public TMP_Text Ready;
     public GameObject Settings;
-    void Update()
+    int count;
+    private void Start()
     {
-        int count = PhotonNetwork.CurrentRoom.PlayerCount;
+        count = PhotonNetwork.CurrentRoom.PlayerCount;
         if (Settings.activeSelf)
         {
             Waiting.enabled = false;

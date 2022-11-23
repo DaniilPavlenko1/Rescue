@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         player1 = GameObject.Find("Player1(Clone)");
         player2 = GameObject.Find("Player2");
         player1.gameObject.transform.localScale = new Vector3((float)0, (float)0, (float)0);
-        player2.gameObject.transform.localScale = new Vector3((float)0, (float)0, (float)0);
+        if(player2) player2.gameObject.transform.localScale = new Vector3((float)0, (float)0, (float)0);
     }
     public void Update()
     {
@@ -37,10 +37,13 @@ public class GameManager : MonoBehaviourPunCallbacks
             player1.GetComponent<CharacterController2D>().enabled = false;
             player1.gameObject.transform.localScale = new Vector3((float)-0.2, (float)0.2, (float)0.2);
             player1.gameObject.transform.position = new Vector2((float)-7.49, (float)-4.4);
-            player2.GetComponent<Animator>().enabled = false;
-            player2.GetComponent<CharacterController2D>().enabled = false;
-            player2.gameObject.transform.localScale = new Vector3((float)0.2, (float)0.2, (float)0.2);
-            player2.gameObject.transform.position = new Vector2((float)7.35, (float)-4.3);
+            if (player2)
+            {
+                player2.GetComponent<Animator>().enabled = false;
+                player2.GetComponent<CharacterController2D>().enabled = false;
+                player2.gameObject.transform.localScale = new Vector3((float)0.2, (float)0.2, (float)0.2);
+                player2.gameObject.transform.position = new Vector2((float)7.35, (float)-4.3);
+            }
         }
         else if (timeRemaining < -1)
         {
@@ -63,15 +66,21 @@ public class GameManager : MonoBehaviourPunCallbacks
                 timerObject.SetActive(false);
                 player1.GetComponent<CharacterController2D>().enabled = true;
                 player1.GetComponent<Animator>().enabled = true;
-                player2.GetComponent<CharacterController2D>().enabled = true;
-                player2.GetComponent<Animator>().enabled = true;
+                if (player2)
+                {
+                    player2.GetComponent<CharacterController2D>().enabled = true;
+                    player2.GetComponent<Animator>().enabled = true;
+                }
             }
             if (win1.activeSelf || win2.activeSelf)
             {
                 player1.GetComponent<Animator>().enabled = false;
                 player1.GetComponent<CharacterController2D>().enabled = false;
-                player2.GetComponent<Animator>().enabled = false;
-                player2.GetComponent<CharacterController2D>().enabled = false;
+                if (player2)
+                {
+                    player2.GetComponent<Animator>().enabled = false;
+                    player2.GetComponent<CharacterController2D>().enabled = false;
+                }
             }
             if (x == 1)
             {
